@@ -1,0 +1,95 @@
+# Background YouTube Music
+
+Add background music to your profile using YouTube videos.
+
+## Overview
+
+You can add background music to your profile by embedding a hidden YouTube iframe in your theme's `index.html` file. The music will auto-play and loop when users visit your profile.
+
+## Implementation
+
+### Step 1: Get YouTube Video ID
+
+1. Go to the YouTube video you want to use for background music
+2. Copy the video ID from the URL:
+   - From `https://www.youtube.com/watch?v=dQw4w9WgXcQ`
+   - The video ID is: `dQw4w9WgXcQ`
+
+### Step 2: Add to Theme Editor
+
+In your theme editor, open the `index.html` file and add this iframe element:
+
+```html
+<iframe 
+  width="0" 
+  height="0" 
+  src="https://www.youtube.com/embed/[YOUTUBE VIDEO ID]/?autoplay=1&loop=1&controls=0" 
+  title="YouTube video player" 
+  frameBorder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowFullScreen 
+  loading="lazy"
+></iframe>
+```
+
+### Step 3: Replace Video ID
+
+Replace `[YOUTUBE VIDEO ID]` with your actual video ID:
+
+```html
+<iframe 
+  width="0" 
+  height="0" 
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ/?autoplay=1&loop=1&controls=0" 
+  title="YouTube video player" 
+  frameBorder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowFullScreen 
+  loading="lazy"
+></iframe>
+```
+
+## Parameters Explained
+
+- `width="0" height="0"` - Makes the iframe invisible
+- `autoplay=1` - Starts playing automatically
+- `loop=1` - Loops the video when it ends
+- `controls=0` - Hides video controls
+- `loading="lazy"` - Improves page load performance
+
+## Best Practices
+
+### Volume Considerations
+- YouTube videos play at user's system volume
+- Consider using quieter/ambient music
+- Some users may find autoplay intrusive
+
+### Performance Tips
+- Use shorter videos (under 5 minutes) to reduce load time
+- Choose videos with minimal visual content (audio-focused)
+- Test on different devices and browsers
+
+### User Experience
+- Consider adding a mute/unmute button for users
+- Inform users that music will play
+- Respect users who may have autoplay disabled
+
+## Browser Compatibility
+
+- **Chrome/Edge**: Full support
+- **Firefox**: Full support  
+- **Safari**: May require user interaction first
+- **Mobile**: Autoplay policies vary by browser
+
+## Troubleshooting
+
+### Music Not Playing
+- Check if video ID is correct
+- Ensure video is not age-restricted
+- Some videos may block embedding
+- Browser autoplay policies may prevent playback
+
+### Performance Issues
+- Use audio-only or low-quality videos
+- Consider using shorter loops
+- Test on slower connections

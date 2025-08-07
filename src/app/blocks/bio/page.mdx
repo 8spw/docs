@@ -1,0 +1,114 @@
+# Bio Block
+
+selector: `#block[data-block="bio"]`
+
+## Overview
+
+The bio block displays the user's biography text with markdown support and an optional edit link.
+
+## Elements
+
+### Container
+
+Style the main bio block container:
+
+```css
+#block[data-block="bio"] {
+  grid-column: span 2;
+  border: 1px solid #333;
+  padding: 16px;
+  background: #1a1a1a;
+  position: relative;
+}
+
+/* Responsive: single column on mobile */
+@media (min-width: 768px) {
+  #block[data-block="bio"] {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}
+```
+
+### Title
+
+Style the "My Bio" title:
+
+```css
+#block[data-block="bio"] .label {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+```
+
+### Bio Text
+
+Style the bio content area:
+
+```css
+#block[data-block="bio"] .text {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* Empty bio state */
+#block[data-block="bio"] .text.italic {
+  font-style: italic;
+  color: #666;
+}
+```
+
+### Edit Link
+
+Style the edit button that appears on hover:
+
+```css
+#edit-link {
+  font-size: 0.75rem;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: none;
+  transition: all 0.2s ease;
+}
+
+/* Show on hover */
+#block[data-block="bio"]:hover #edit-link {
+  display: block;
+}
+
+#edit-link:hover {
+  color: #22c55e; /* primary color */
+  text-decoration: underline;
+}
+```
+
+## Markdown Support
+
+The bio supports markdown formatting. You can style markdown elements within the bio:
+
+```css
+#block[data-block="bio"] .text p {
+  margin-bottom: 8px;
+}
+
+#block[data-block="bio"] .text strong {
+  font-weight: bold;
+  color: #fff;
+}
+
+#block[data-block="bio"] .text em {
+  font-style: italic;
+}
+
+#block[data-block="bio"] .text a {
+  color: #22c55e;
+  text-decoration: none;
+}
+
+#block[data-block="bio"] .text a:hover {
+  text-decoration: underline;
+}
+```

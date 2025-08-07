@@ -1,0 +1,214 @@
+# Tracks Block
+
+selector: `#block[data-block="tracks"]`
+
+## Overview
+
+The tracks block displays the user's top tracks from their music streaming service with cover art, track names, and artist information.
+
+## Elements
+
+### Container
+
+Style the main tracks block container:
+
+```css
+#block[data-block="tracks"] {
+  grid-column: span 2;
+  border: 1px solid #333;
+  padding: 16px;
+  background: #1a1a1a;
+  position: relative;
+}
+
+/* Responsive: single column on mobile, 3 rows on desktop */
+@media (min-width: 768px) {
+  #block[data-block="tracks"] {
+    grid-column: span 1;
+    grid-row: span 3;
+  }
+}
+```
+
+### Title
+
+Style the "My Top Tracks" title:
+
+```css
+#block[data-block="tracks"] .label {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+```
+
+### Empty State
+
+Style when no tracks are available:
+
+```css
+#block[data-block="tracks"] .italic {
+  font-style: italic;
+  color: #666;
+}
+
+/* When tracks exist, remove italic and add spacing */
+#block[data-block="tracks"] .not-italic {
+  font-style: normal;
+  margin-top: 12px;
+}
+
+#block[data-block="tracks"] .space-y-1 > * + * {
+  margin-top: 4px;
+}
+```
+
+### Track Card
+
+Style individual track items:
+
+```css
+#track-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+#track-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+```
+
+### Track Cover
+
+Style the album/track cover image:
+
+```css
+#track-cover-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#track-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+```
+
+### Track Information
+
+Style the track name and artist information:
+
+```css
+#track-info {
+  flex: 1;
+  min-width: 0; /* Allow text truncation */
+}
+
+#track-name {
+  font-size: 0.875rem;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#track-artists {
+  font-size: 0.75rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+### Sync Link
+
+Style the sync button that appears on hover:
+
+```css
+#edit-link {
+  font-size: 0.75rem;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: none;
+  transition: all 0.2s ease;
+}
+
+/* Show on hover */
+#block[data-block="tracks"]:hover #edit-link {
+  display: block;
+}
+
+#edit-link:hover {
+  color: #22c55e; /* primary color */
+  text-decoration: underline;
+}
+```
+
+## Advanced Styling
+
+### Scrollable Tracks
+
+If you have many tracks, make the container scrollable:
+
+```css
+#block[data-block="tracks"] {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar */
+#block[data-block="tracks"]::-webkit-scrollbar {
+  width: 4px;
+}
+
+#block[data-block="tracks"]::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#block[data-block="tracks"]::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+```
+
+### Track Card Animations
+
+Add more sophisticated hover effects:
+
+```css
+#track-card {
+  position: relative;
+  overflow: hidden;
+}
+
+#track-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1));
+  transition: width 0.3s ease;
+}
+
+#track-card:hover::before {
+  width: 100%;
+}
+```

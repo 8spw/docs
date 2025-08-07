@@ -1,4 +1,4 @@
-import { Footer, Layout, Navbar } from "nextra-theme-docs";
+import { Layout, Navbar } from "nextra-theme-docs";
 import { Banner } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
@@ -10,7 +10,6 @@ export const metadata = {
   description: "Kreatiko Documentation, How to style your profile",
 };
 
-const banner = <Banner storageKey="some-key">Kreatiko is released 🎉</Banner>;
 const navbar = (
   <Navbar
     logo={
@@ -34,7 +33,13 @@ export default async function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body>
-        <Layout banner={banner} navbar={navbar} pageMap={await getPageMap()}>
+        <Layout
+          navbar={navbar}
+          pageMap={await getPageMap()}
+          themeSwitch={{
+            dark: "dark",
+          }}
+        >
           {children}
         </Layout>
       </body>

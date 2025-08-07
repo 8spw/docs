@@ -1,0 +1,236 @@
+import { Callout } from 'nextra/components'
+
+# Profile Block
+
+selector: `#block[data-block="profile"]`
+
+### Avatar Image
+
+The avatar image component has multiple elements you can style:
+
+#### Avatar Container
+The main avatar wrapper with size and hover effects:
+
+```css
+#avatar {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #fff;
+  border-radius: 50%; /* makes it circular */
+}
+```
+
+#### Avatar Image
+Style the actual profile image:
+
+```css
+#profile-avatar {
+  border-radius: 50%;
+  filter: grayscale(100%); /* black and white */
+  transition: filter 0.3s ease;
+}
+
+#profile-avatar:hover {
+  filter: grayscale(0%); /* color on hover */
+}
+```
+
+#### Avatar Fallback
+Style the initials when no image is available:
+
+```css
+#avatar-fallback {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+```
+
+#### Upload Overlay
+Style the upload button that appears on hover:
+
+```css
+#avatar-upload {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+#avatar-upload .text {
+  color: white;
+  font-size: 0.875rem;
+}
+```
+
+<Callout type="info">
+Please note avatar upload will be visible for only you. You can't see other users avatar upload hover effect.
+</Callout>
+
+
+### Status
+
+Style the status section that shows user's current activity:
+
+```css
+#status {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #00ff00; /* green indicator */
+}
+
+#status .label {
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#status .text {
+  color: #fff;
+  margin-top: 4px;
+  font-style: italic;
+}
+```
+
+### Activity
+
+Style the activity indicator with online/offline status:
+
+```css
+#activity {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  color: #ccc;
+}
+
+/* The status dot before the text */
+#activity::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* Online state - green dot */
+#activity[data-state="online"]::before {
+  background-color: #22c55e; /* green */
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+}
+
+/* Offline state - gray dot */
+#activity[data-state="offline"]::before {
+  background-color: #6b7280; /* gray */
+}
+
+/* Optional: pulse animation for online status */
+#activity[data-state="online"]::before {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+```
+
+### Followers
+
+Style the followers/following section with links:
+
+```css
+#follow-counts {
+  font-size: 0.75rem;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#followers, #following {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#followers:hover, #following:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* Alternative: style the container with spacing */
+#follow-counts a {
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+#follow-counts a:hover {
+  border-bottom: 1px solid #444;
+}
+```
+
+#### Follow/Unfollow Button
+
+```css
+/* Follow/Unfollow Button */
+#follow-counts button {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 2px 0;
+  margin-top: 8px;
+}
+
+/* Not following state - show as follow button */
+#follow-counts button[data-state="not-following"] {
+  color: #22c55e; /* green - follow */
+}
+
+#follow-counts button[data-state="not-following"]:hover {
+  text-decoration: underline;
+  color: #16a34a;
+  transform: translateX(2px);
+}
+
+/* Following state - show as unfollow button */
+#follow-counts button[data-state="following"] {
+  color: #ef4444; /* red - unfollow */
+}
+
+#follow-counts button[data-state="following"]:hover {
+  text-decoration: underline;
+  color: #dc2626;
+  transform: translateX(2px);
+}
+
+/* Alternative: styled as proper buttons with different colors */
+#follow-counts button[data-state="not-following"] {
+  background: #22c55e;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+#follow-counts button[data-state="following"] {
+  background: #ef4444;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+#follow-counts button:hover {
+  transform: scale(1.05);
+}
+```

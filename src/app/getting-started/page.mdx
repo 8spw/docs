@@ -1,9 +1,43 @@
 # Getting Started
 
-Here's how to get started.
+To style profiles, you need to target specific classes and IDs provided by Kreatiko's profile structure. The platform uses a modular CSS approach, allowing you to override default styles or add new ones.
 
-## Installation
+## Basic Structure
 
-```bash
-npm install
+Kreatiko's profile structure is organized into several key elements:
+
+- `#block`: containers of profile elements
+- `.text`: every text element (including links)
+- `img`: every image element
+- `button`: every button element
+- `a`: every link element
+
+### Blocks
+
+Each block has their own block type in html div for example:
+
+if you want to style every block you can use the following selector:
+
+```css
+#block {
+  background-color: red;
+}
+```
+
+if you want to style a specific block you can use the following selector:
+
+```css
+#block[data-block="profile"] {
+  background-color: red;
+}
+```
+
+### Text
+
+Text is the main text element in the profile.
+
+```css
+.text {
+  color: red;
+}
 ```

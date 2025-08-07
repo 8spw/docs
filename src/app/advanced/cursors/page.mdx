@@ -1,0 +1,205 @@
+# Custom Cursors
+
+Add custom animated or static cursors to your profile theme.
+
+## Overview
+
+You can customize your profile's cursor using `.ani` (animated) or `.cur` (static) cursor files. This adds a unique visual element to enhance user interaction with your profile.
+
+## Implementation
+
+### Step 1: Choose Your Cursor
+
+Visit [ani.cursors-4u.net](https://ani.cursors-4u.net) to browse available animated cursors, or upload your own custom cursor files to a cloud storage service.
+
+### Step 2: Add to Theme CSS
+
+In your theme editor, open the `style.css` file and add this CSS:
+
+```css
+body,
+a,
+button,
+*:hover,
+*:active,
+*:focus {
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-8/sym761.ani), 
+          url(https://ani.cursors-4u.net/symbols/sym-8/sym761.png), 
+          auto !important;
+}
+```
+
+### Step 3: Replace Cursor URLs
+
+Replace the example URLs with your chosen cursor:
+
+```css
+body,
+a,
+button,
+*:hover,
+*:active,
+*:focus {
+  cursor: url(YOUR_CURSOR_URL.ani), 
+          url(YOUR_CURSOR_URL.png), 
+          auto !important;
+}
+```
+
+## File Requirements
+
+### Size Limitations
+- **Recommended**: 32x32 pixels maximum
+- **Technical limit**: 64x64 pixels (Windows)
+- **Beyond 64x64**: May not work or fallback to default cursor
+
+### File Formats
+- **`.ani`**: Animated cursors (Windows format)
+- **`.cur`**: Static cursors (Windows format)
+- **`.png`**: Fallback for browsers that don't support .ani/.cur
+
+## Custom Cursor Upload
+
+### Using Cloud Storage
+
+If you have your own cursor files, upload them to a cloud storage service:
+
+1. **Upload to cloud storage** (Google Drive, Dropbox, GitHub, etc.)
+2. **Get direct link** to the file
+3. **Use in CSS**:
+
+```css
+body,
+a,
+button,
+*:hover,
+*:active,
+*:focus {
+  cursor: url(https://your-cloud-storage.com/path/to/cursor.ani), 
+          url(https://your-cloud-storage.com/path/to/cursor.png), 
+          auto !important;
+}
+```
+
+### Creating Custom Cursors
+
+To create your own animated cursors:
+- Use tools like **CursorFX**, **RealWorld Cursor Editor**, or **AniTuner**
+- Keep dimensions at 32x32 pixels for best compatibility
+- Export as `.ani` for animation or `.cur` for static
+- Create a `.png` fallback version
+
+## Advanced Targeting
+
+### Different Cursors for Different Elements
+
+```css
+/* Default cursor for body */
+body {
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-8/sym761.ani), auto;
+}
+
+/* Special cursor for links */
+a, a:hover {
+  cursor: url(https://ani.cursors-4u.net/hearts/hea-2/hea126.ani), pointer;
+}
+
+/* Special cursor for buttons */
+button, button:hover {
+  cursor: url(https://ani.cursors-4u.net/arrows/arr-6/arr593.ani), pointer;
+}
+
+/* Special cursor for input fields */
+input, textarea {
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-1/sym67.ani), text;
+}
+```
+
+### Hover Effects
+
+```css
+/* Change cursor on hover over specific elements */
+.special-element:hover {
+  cursor: url(https://ani.cursors-4u.net/space/spa-1/spa14.ani), pointer;
+}
+
+/* Different cursor for interactive areas */
+.clickable {
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-8/sym761.ani), pointer;
+}
+```
+
+## Browser Compatibility
+
+- **Chrome/Chromium**: Full support for .ani and .cur
+- **Firefox**: Limited .ani support, good .cur support
+- **Safari**: Limited support, often falls back to .png
+- **Edge**: Full support for .ani and .cur
+- **Mobile browsers**: Generally no custom cursor support
+
+## Performance Considerations
+
+### File Size
+- Keep cursor files under 50KB when possible
+- Animated cursors use more resources than static ones
+- Test on slower devices to ensure smooth animation
+
+### Loading
+- Cursors are cached by the browser
+- Use CDN links for faster loading
+- Provide fallbacks for better compatibility
+
+## Troubleshooting
+
+### Cursor Not Appearing
+- Check if URL is accessible (visit in browser)
+- Ensure file format is supported
+- Verify file size is within limits
+- Check for CORS restrictions on hosting service
+
+### Animation Not Working
+- Browser may not support .ani files
+- File may be corrupted or too large
+- Try different browser or provide static fallback
+
+### Performance Issues
+- Reduce animation frame rate
+- Use smaller file sizes
+- Consider static cursor instead
+
+## Best Practices
+
+### User Experience
+- Don't use overly distracting cursors
+- Ensure cursor is visible on your background colors
+- Test accessibility with screen readers
+- Provide option to disable custom cursors
+
+### Technical
+- Always include `auto` fallback
+- Test across different browsers
+- Use appropriate cursor types (pointer for links, text for inputs)
+- Consider loading time on slower connections
+
+## Example Themes
+
+### Retro/Y2K Theme
+```css
+body {
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-8/sym761.ani), auto;
+}
+```
+
+### Space Theme
+```css
+body {
+  cursor: url(https://ani.cursors-4u.net/space/spa-1/spa14.ani), auto;
+}
+```
+
+### Heart Theme
+```css
+body {
+  cursor: url(https://ani.cursors-4u.net/hearts/hea-2/hea126.ani), auto;
+}
+```

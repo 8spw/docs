@@ -1,6 +1,7 @@
 export default {
-  index: "Home",
+  index: "Introduction",
   "getting-started": "Getting Started",
+  blocks: "Blocks",
+  global: "Global",
   advanced: "Advanced",
-  categories: "Categories",
 };

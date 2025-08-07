@@ -1,0 +1,211 @@
+# Blogs Block
+
+selector: `#block[data-block="blogs"]`
+
+## Overview
+
+The blogs block displays a list of the user's blog posts with titles, creation dates, and view links in a tall vertical layout.
+
+## Elements
+
+### Container
+
+Style the main blogs block container:
+
+```css
+#block[data-block="blogs"] {
+  grid-column: span 2;
+  border: 1px solid #333;
+  padding: 16px;
+  background: #1a1a1a;
+  position: relative;
+}
+
+/* Responsive: single column on mobile, 6 rows on desktop */
+@media (min-width: 768px) {
+  #block[data-block="blogs"] {
+    grid-column: span 1;
+    grid-row: span 6;
+  }
+}
+```
+
+### Title
+
+Style the "Blogs" title:
+
+```css
+#block[data-block="blogs"] .label {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+```
+
+### Empty State
+
+Style when no blogs are available:
+
+```css
+#block[data-block="blogs"] .italic {
+  font-style: italic;
+  color: #666;
+}
+```
+
+### Blog Card
+
+Style individual blog post items:
+
+```css
+#blog-card {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+/* Remove border from last item */
+#blog-card:last-child {
+  border-bottom: none;
+}
+
+#blog-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+  margin: 0 -8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+```
+
+### Blog Title
+
+Style the blog post title link:
+
+```css
+#blog-title {
+  font-size: 0.875rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+#blog-title:hover {
+  color: #22c55e; /* primary color */
+  text-decoration: underline;
+}
+```
+
+### Blog Creation Time
+
+Style the "time ago" date display:
+
+```css
+#blog-creation-time {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2px;
+}
+```
+
+### Blog View Link
+
+Style the "[View]" link:
+
+```css
+#blog-view-link {
+  font-size: 0.75rem;
+  color: #22c55e; /* primary color */
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+#blog-view-link:hover {
+  text-decoration: underline;
+  color: #16a34a; /* darker green */
+  transform: translateX(2px);
+}
+```
+
+## Advanced Styling
+
+### Scrollable Blog List
+
+For many blog posts, make the container scrollable:
+
+```css
+#block[data-block="blogs"] {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar */
+#block[data-block="blogs"]::-webkit-scrollbar {
+  width: 4px;
+}
+
+#block[data-block="blogs"]::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#block[data-block="blogs"]::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+```
+
+### Blog Card Hover Effects
+
+Add subtle animations to blog cards:
+
+```css
+#blog-card {
+  position: relative;
+  overflow: hidden;
+}
+
+#blog-card::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+#blog-card:hover::before {
+  left: 100%;
+}
+```
+
+### Date Formatting
+
+Style different date formats:
+
+```css
+#blog-creation-time {
+  position: relative;
+}
+
+/* Style for "today" posts */
+#blog-creation-time[title*="today"] {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+/* Style for recent posts (this week) */
+#blog-creation-time[title*="day"] {
+  color: #fbbf24;
+}
+```

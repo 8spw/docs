@@ -1,0 +1,167 @@
+# Footer
+
+Global footer component styling.
+
+## Overview
+
+The footer contains legal links, copyright, and nostalgic "best viewed with" browser badges. All elements have IDs for precise targeting.
+
+## Elements
+
+### Main Container
+
+```css
+#main-footer {
+  margin-top: auto;
+  padding: 48px 0;
+  font-size: 0.75rem;
+  background: linear-gradient(to top, #111, #1a1a1a);
+  border-top: 1px solid #333;
+}
+```
+
+### Legal Section
+
+```css
+#legal-section {
+  text-align: center;
+}
+
+#legal-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+#legal-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+```
+
+### Legal Links
+
+```css
+#privacy-link,
+#terms-link,
+#cookies-link {
+  color: #22c55e; /* primary */
+  text-decoration: underline;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+#privacy-link:hover,
+#terms-link:hover,
+#cookies-link:hover {
+  text-decoration: none;
+  background: rgba(34, 197, 94, 0.2);
+  transform: translateY(-1px);
+}
+```
+
+### Copyright
+
+```css
+#copyright {
+  text-align: center;
+  margin-top: 24px;
+  color: #888;
+  font-style: italic;
+}
+```
+
+### Best Viewed Section
+
+```css
+#best-viewed {
+  margin-top: 24px;
+}
+
+#best-viewed > div:first-child {
+  text-align: center;
+  margin-top: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+#browser-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+#w3c-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+```
+
+### Browser Badge Links
+
+```css
+#ie-badge,
+#netscape-badge,
+#realplayer-badge,
+#w3c-badge a {
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+#ie-badge:hover,
+#netscape-badge:hover,
+#realplayer-badge:hover,
+#w3c-badge a:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Individual badge styling */
+#ie-badge img,
+#netscape-badge img,
+#realplayer-badge img,
+#w3c-badge img {
+  max-height: 32px;
+  filter: brightness(0.9);
+  transition: filter 0.2s ease;
+}
+
+#ie-badge img:hover,
+#netscape-badge img:hover,
+#realplayer-badge img:hover,
+#w3c-badge img:hover {
+  filter: brightness(1);
+}
+```
+
+## Responsive Design
+
+```css
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  #main-footer {
+    padding: 32px 0;
+  }
+  
+  #legal-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  #browser-badges {
+    gap: 12px;
+  }
+}
+```

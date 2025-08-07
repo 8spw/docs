@@ -1,0 +1,110 @@
+# Friends Block
+
+selector: `#block[data-block="friends"]`
+
+## Overview
+
+Shows the user's friends list with avatar, name and a link to view the full list.
+
+## Elements
+
+### Container
+```css
+#block[data-block="friends"] {
+  border: 1px solid #333;
+  background: #1a1a1a;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  #block[data-block="friends"] {
+    grid-row: span 3;
+  }
+}
+```
+
+### Title
+```css
+#block[data-block="friends"] .label {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+```
+
+### Empty State
+```css
+#block[data-block="friends"] .italic.text {
+  color: #666;
+}
+```
+
+### Friends List
+Add ids to make targeting easier:
+- Link row: `id="friend-card"`
+- Avatar image: `id="friend-avatar"`
+- Name text: `id="friend-name"`
+
+```css
+/* Friend row */
+#friend-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Last row without border */
+#friend-card:last-child {
+  border-bottom: none;
+}
+
+#friend-card:hover {
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  margin: 0 -6px;
+  padding: 6px;
+}
+
+/* Avatar */
+#friend-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Name */
+#friend-name {
+  font-size: 0.875rem;
+  color: #fff;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+### View All
+Style the "View all friends" link:
+
+```css
+#friends-view-all {
+  font-size: 0.75rem;
+  color: #22c55e; /* primary */
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#friends-view-all:hover {
+  color: #16a34a;
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+```

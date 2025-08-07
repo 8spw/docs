@@ -34,6 +34,12 @@ export default async function RootLayout({
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body>
         <Layout
+          feedback={{
+            content: "Give us Feedback",
+            labels: "feedback",
+            link: "https://github.com/kreatiko/docs/issues/new",
+          }}
+          docsRepositoryBase="https://github.com/kreatiko/docs/blob/main"
           navbar={navbar}
           pageMap={await getPageMap()}
           themeSwitch={{

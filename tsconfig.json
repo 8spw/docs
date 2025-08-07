@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "mdx-components.tsx", "src/app/page.mdx", "src/app/advanced/sub-cateogry/page.mdx", "src/app/advanced/sub/page.mdx"],
   "exclude": ["node_modules"]
 }
